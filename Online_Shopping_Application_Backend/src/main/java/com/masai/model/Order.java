@@ -35,6 +35,13 @@ public class Order {
 	
 	@OneToMany(fetch = FetchType.EAGER)
 	private List<Product> products = new ArrayList<>();
+
+	public Order(@PastOrPresent LocalDate orderDate,
+			@NotBlank(message = "please provide valid orderstatus") String orderStatus) {
+		super();
+		this.orderDate = orderDate;
+		this.orderStatus = orderStatus;
+	}
 	
 	
 }

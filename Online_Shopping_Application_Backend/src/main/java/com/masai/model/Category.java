@@ -17,5 +17,12 @@ public class Category {
 	@NotBlank(message = "category name can not be blank")
 	@Size(min = 2,max = 50,message = "please provide a valid category name")
 	private String categoryName;
+
+	public Category(
+			@NotBlank(message = "category name can not be blank") @Size(min = 2, max = 50, message = "please provide a valid category name") String categoryName) {
+		super();
+		this.categoryName = categoryName;
+	}
+	
 	
 }
