@@ -38,6 +38,17 @@ public class Order {
     @JoinColumn(name = "address_id")
     private Address address;
 	
+
+	@OneToMany(fetch = FetchType.EAGER)
+	private List<Product> products = new ArrayList<>();
+
+	public Order(@PastOrPresent LocalDate orderDate,
+			@NotBlank(message = "please provide valid orderstatus") String orderStatus) {
+		super();
+		this.orderDate = orderDate;
+		this.orderStatus = orderStatus;
+	}
+
 	public Order() {
         // Default constructor
     }
@@ -135,6 +146,7 @@ public class Order {
         }
         product.setQuantity(product.getQuantity() + quantity);
     }
+
 	
 	
 }
