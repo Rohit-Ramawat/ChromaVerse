@@ -22,13 +22,6 @@ public class User {
 	
 	@NotBlank(message = "role can not be blank")
 	private String role;
-
-	public User(@Size(min = 5, max = 19, message = "please provide a suitable password") String password,
-			@NotBlank(message = "role can not be blank") String role) {
-		super();
-		this.password = password;
-		this.role = role;
-	}
 	
 	
 }

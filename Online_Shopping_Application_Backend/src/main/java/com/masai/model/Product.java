@@ -37,20 +37,6 @@ public class Product {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Category category;
-
-	public Product(
-			@NotBlank(message = "product name can not be blank") @Size(min = 2, max = 50, message = "please provide a valid product name") String productName,
-			@Min(value = 1, message = "price can not be zero or negative") double price,
-			@NotBlank(message = "description can not be blank") @Size(min = 2, max = 120, message = "please provide a valid description") String description,
-			@NotBlank(message = "brand can not be blank") @Size(min = 2, max = 50, message = "please provide a valid brand") String brand,
-			@Min(value = 0, message = "quantity can not be negative") int quantity) {
-		super();
-		this.productName = productName;
-		this.price = price;
-		this.description = description;
-		this.brand = brand;
-		this.quantity = quantity;
-	}
 	
 	
 }
