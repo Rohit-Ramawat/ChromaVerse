@@ -8,9 +8,15 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 	
 	@Id
@@ -22,13 +28,6 @@ public class User {
 	
 	@NotBlank(message = "role can not be blank")
 	private String role;
-
-	public User(@Size(min = 5, max = 19, message = "please provide a suitable password") String password,
-			@NotBlank(message = "role can not be blank") String role) {
-		super();
-		this.password = password;
-		this.role = role;
-	}
 	
 	
 }

@@ -6,8 +6,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Category {
 	
 	@Id
@@ -17,12 +23,5 @@ public class Category {
 	@NotBlank(message = "category name can not be blank")
 	@Size(min = 2,max = 50,message = "please provide a valid category name")
 	private String categoryName;
-
-	public Category(
-			@NotBlank(message = "category name can not be blank") @Size(min = 2, max = 50, message = "please provide a valid category name") String categoryName) {
-		super();
-		this.categoryName = categoryName;
-	}
-	
 	
 }
