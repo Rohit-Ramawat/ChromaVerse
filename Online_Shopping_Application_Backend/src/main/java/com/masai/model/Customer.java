@@ -58,6 +58,7 @@ public class Customer extends User{
 	@JoinColumn(name = "cart_id")
 	private Cart cart;
 
+
 	public Customer(Integer userId, String password, String role,
 			@NotBlank(message = "first name can not be blank") @Size(min = 2, max = 50, message = "please provide a valid") String firstName,
 			@NotBlank(message = "last name can not be blank") @Size(min = 2, max = 70, message = "please provide a valid") String lastName,
@@ -74,3 +75,6 @@ public class Customer extends User{
 	
 	
 }
+
+}
+
