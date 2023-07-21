@@ -43,6 +43,36 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<MyErrorDetail>(error, HttpStatus.BAD_REQUEST);
 	}
 	
+	@ExceptionHandler(CustomerException.class)
+	public ResponseEntity<MyErrorDetail> noHandlerFoundHandler(CustomerException ex,WebRequest req){
+		
+		MyErrorDetail error = new MyErrorDetail(ex.getMessage(), LocalDateTime.now(), req.getDescription(false));
+		
+		return new ResponseEntity<MyErrorDetail>(error, HttpStatus.BAD_REQUEST);
+	}
 	
+	@ExceptionHandler(CartException.class)
+	public ResponseEntity<MyErrorDetail> noHandlerFoundHandler(CartException ex,WebRequest req){
+		
+		MyErrorDetail error = new MyErrorDetail(ex.getMessage(), LocalDateTime.now(), req.getDescription(false));
+		
+		return new ResponseEntity<MyErrorDetail>(error, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(OrderException.class)
+	public ResponseEntity<MyErrorDetail> noHandlerFoundHandler(OrderException ex,WebRequest req){
+		
+		MyErrorDetail error = new MyErrorDetail(ex.getMessage(), LocalDateTime.now(), req.getDescription(false));
+		
+		return new ResponseEntity<MyErrorDetail>(error, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(ProductException.class)
+	public ResponseEntity<MyErrorDetail> noHandlerFoundHandler(ProductException ex,WebRequest req){
+		
+		MyErrorDetail error = new MyErrorDetail(ex.getMessage(), LocalDateTime.now(), req.getDescription(false));
+		
+		return new ResponseEntity<MyErrorDetail>(error, HttpStatus.BAD_REQUEST);
+	}
 	
 }

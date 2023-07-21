@@ -15,17 +15,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.model.Customer;
-import com.masai.service.CustomerService;
+import com.masai.service.CustomerServiceImpl;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
 @RequestMapping("/customers")
 public class CustomerController {
-    private CustomerService customerService;
+    private CustomerServiceImpl customerService;
 
     @Autowired
-    public CustomerController(CustomerService customerService) {
+    public CustomerController(CustomerServiceImpl customerService) {
         this.customerService = customerService;
     }
 

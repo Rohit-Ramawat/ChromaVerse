@@ -10,11 +10,11 @@ public interface ProductService {
 
 	public Product updateProduct(Product product);
 
-	public Product viewProduct(int id);
+	public Product viewProductById(Integer id);
 
 	public List<Product> viewAllProducts();
 
 	public List<Product> viewProductByCategory(String cname);
 
-	public Product removeProduct(int pid);
+	public Product removeProduct(Integer pid);
 }
