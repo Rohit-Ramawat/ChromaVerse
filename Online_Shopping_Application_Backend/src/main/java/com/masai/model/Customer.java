@@ -29,8 +29,6 @@ import lombok.ToString;
 @NoArgsConstructor
 public class Customer extends User{
 	
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer customerId;
 	
 	@NotBlank(message = "first name can not be blank")
 	@Size(min = 2,max = 50,message = "please provide a valid")
@@ -54,7 +52,7 @@ public class Customer extends User{
 	private List<Order> orders = new ArrayList<>();
 	
 	@JsonIgnore
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cart_id")
 	private Cart cart;
 

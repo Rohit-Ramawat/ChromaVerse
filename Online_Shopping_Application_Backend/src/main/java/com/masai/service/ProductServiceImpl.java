@@ -56,9 +56,10 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public List<Product> searchProducts(String keyword, Integer page, Integer pageSize) {
-        Pageable pageable = PageRequest.of(page, pageSize);
-        Page<Product> productsPage = productRepository.searchProducts(keyword, pageable);
-        return productsPage.getContent();
+//        Pageable pageable = PageRequest.of(page, pageSize);
+//        Page<Product> productsPage = productRepository.searchProducts(keyword, pageable);
+//        return productsPage.getContent();
+		return null;
     }
 	
 	@Override
@@ -73,9 +74,10 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Override
 	public List<Product> filterProducts(String brand, String color, String size, Integer page, Integer pageSize) {
-        Pageable pageable = PageRequest.of(page, pageSize);
-        Page<Product> productsPage = productRepository.findProductsByBrandAndColorAndSize(brand, color, size, pageable);
-        return productsPage.getContent();
+//        Pageable pageable = PageRequest.of(page, pageSize);
+//        Page<Product> productsPage = productRepository.findProductsByBrandAndColorAndSize(brand, color, size, pageable);
+//        return productsPage.getContent();
+        return null;
     }
 
 }
