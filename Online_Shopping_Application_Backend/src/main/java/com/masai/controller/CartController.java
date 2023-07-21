@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.masai.model.Cart;
 import com.masai.model.Product;
 import com.masai.service.CartService;
+import com.masai.service.ProductService;
 
 @RestController
 @RequestMapping("/carts")
@@ -24,6 +25,7 @@ public class CartController {
 
 	@Autowired
 	private CartService cartService;
+	
 	@PostMapping("/{cartId}/add")
 	public ResponseEntity<Cart> addProductToCart(@PathVariable int cartId, @RequestParam int productId, @RequestParam int quantity){
 		Cart cart = cartService.addProductToCart(cartId, productId, quantity);

@@ -1,5 +1,6 @@
 package com.masai.service;
 
+import java.time.LocalDate;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,7 @@ import com.masai.repository.OrderRepository;
 import com.masai.repository.ProductRepository;
 
 @Service
-public class OrderServiceImpl implements OrderService{
+public abstract class OrderServiceImpl implements OrderService{
 	
 	@Autowired
     private OrderRepository orderRepository;
@@ -19,63 +20,84 @@ public class OrderServiceImpl implements OrderService{
 	@Autowired
     private ProductRepository productRepository;
 
-    public Order createOrder(Order order) {
-        // Additional business logic can be implemented here if needed
-        updateProductQuantities(order); // Update product quantities before saving the order
+	
+	
+
+	public Order createOrder(Order order) {
+		
+        if (order == null || order.getProductList().isEmpty() || order.getCustomer() == null) {
+            throw new IllegalArgumentException("Invalid order data. Order, products, and customer must be provided.");
+        }
+
+        if (order.getOrderStatus() == null) {
+            order.setOrderStatus("pending");
+        }
+
+        order.setOrderDate(LocalDate.now()); 
+        
+        updateProductQuantities(order); 
+
         return orderRepository.save(order);
     }
 
-    public Order getOrderById(Integer orderId) {
-        return orderRepository.findById(orderId).orElseThrow(()->new OrderException("Invalid orderId"));
+    public Order updateOrder(Order order) {
+    	
+        if (order == null || order.getProductList().isEmpty() || order.getCustomer() == null) {
+            throw new IllegalArgumentException("Invalid order data. Order, products, and customer must be provided.");
+        }
+
+        updateProductQuantities(order); 
+
+        return orderRepository.save(order);
     }
 
-    public void cancelOrder(Integer orderId) {
+    public void deleteOrder(Integer orderId) {
         Order order = getOrderById(orderId);
         if (order != null) {
-            // If the order is canceled, add back the ordered product quantities to the total product quantities
-            for (Map.Entry<Product, Integer> entry : order.getProductList().entrySet()) {
-                Product product = entry.getKey();
-                int quantity = entry.getValue();
-                product.setQuantity(product.getQuantity() + quantity);
+            cancelOrder(order);
+            orderRepository.delete(order);
+        }
+    }
+
+    public Order getOrderById(Integer orderId) {
+        return orderRepository.findById(orderId).orElse(null);
+    }
+
+    
+    public void cancelOrder(Order order) {
+        if (order != null) {
+            for (Product product : order.getProductList()) {
+                int orderedQuantity = product.getQuantity();
+                product.setQuantity(product.getQuantity() + orderedQuantity);
+                productRepository.save(product);
             }
+
             order.setOrderStatus("canceled");
             orderRepository.save(order);
         }
     }
 
-    // Method to update the status of an order
-    public void updateOrderStatus(Integer orderId, String status) {
-        Order order = getOrderById(orderId);
+    public void updateOrderStatus(Order order, String status) {
         if (order != null) {
             order.setOrderStatus(status);
             orderRepository.save(order);
         }
     }
 
-    // Method to calculate the total price of an order
-    public double calculateOrderTotalPrice(Integer orderId) {
-    	
-        Order order = getOrderById(orderId);
-        
-        if (order != null) {
-            return OrderServiceImpl.getTotalPrice();
+    public double calculateOrderTotalPrice(Order order) {
+        double totalPrice = 0;
+        for (Product product : order.getProductList()) {
+            int quantity = product.getQuantity();
+            totalPrice += product.getPrice() * quantity;
         }
-        
-        return 0;
+        return totalPrice;
     }
 
-    public static double getTotalPrice() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	// Helper method to update product quantities based on the ordered products
     public void updateProductQuantities(Order order) {
-    	
-        for (Map.Entry<Product, Integer> entry : order.getProductList().entrySet()) {
-            Product product = entry.getKey();
-            int orderedQuantity = entry.getValue();
-            int availableQuantity = product.getQuantity();
+        for (Product product : order.getProductList()) {
+            int orderedQuantity = product.getQuantity();
+            Product p = productRepository.findById(product.getProductId()).get();
+            int availableQuantity = p.getQuantity();
 
             if (orderedQuantity > availableQuantity) {
                 throw new IllegalArgumentException("Requested quantity exceeds available stock for product: " + product.getProductName());
@@ -85,8 +107,6 @@ public class OrderServiceImpl implements OrderService{
             productRepository.save(product);
         }
     }
-
-
 }
 
 
