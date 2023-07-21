@@ -1,6 +1,7 @@
 package com.masai.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -17,6 +18,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.List;
 
 @Entity
 @Table(name = "OrderTable")
@@ -35,7 +37,7 @@ public class Order {
     private String orderStatus = "pending";
     
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private Map<Product, Integer> productList = new HashMap<>();
+    private List<Product> productList = new ArrayList<>();
     
     @ManyToOne
     @JoinColumn(name = "customer_id")
