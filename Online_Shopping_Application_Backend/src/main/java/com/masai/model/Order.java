@@ -2,8 +2,6 @@ package com.masai.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -34,16 +32,16 @@ public class Order {
 	@JsonFormat(pattern = "dd/MM/YYYY")
     private LocalDate orderDate;
     
-    private String orderStatus = "pending";
+    private String status = "pending";
     
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private List<Product> productList = new ArrayList<>();
+    private List<Product> product = new ArrayList<>();
     
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-
+    private double totalPrice;
 }
 
     
