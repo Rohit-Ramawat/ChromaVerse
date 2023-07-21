@@ -25,7 +25,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public Product viewProduct(int id) {
+	public Product viewProductById(Integer id) {
 		 return productRepository.findById(id).orElse(null);
 	}
 
@@ -40,7 +40,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public Product removeProduct(int pid) {
+	public Product removeProduct(Integer pid) {
 		Product product = productRepository.findById(pid).orElse(null);
         if (product != null) {
             productRepository.delete(product);
