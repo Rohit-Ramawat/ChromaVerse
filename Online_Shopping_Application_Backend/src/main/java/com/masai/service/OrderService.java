@@ -8,12 +8,16 @@ public interface OrderService {
 	
 	public Order getOrderById(Integer orderId);
 	
-	public void cancelOrder(Integer orderId);
+	public void cancelOrder(int orderId);
 	
-	public void updateOrderStatus(Integer orderId, String status);
+	public void updateOrderStatus(Order order, String status);
 	
-	public double calculateOrderTotalPrice(Integer orderId);
+	public double calculateOrderTotalPrice(Order order);
 	
 	public void updateProductQuantities(Order order);
+
+	public Order updateOrder(Order order);
+
+	public void cancelOrder(Order order);
 	
 }
