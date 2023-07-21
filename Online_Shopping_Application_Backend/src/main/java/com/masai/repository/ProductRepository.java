@@ -10,8 +10,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer>{
 
 	Page<Product> findByCategory(String cname, Pageable pageable);
 
-	Page<Product> searchProducts(String keyword, Pageable pageable);
+	//Page<Product> searchProducts(String keyword, Pageable pageable);
 
-	Page<Product> findProductsByBrandAndColorAndSize(String brand, String color, String size, Pageable pageable);
+	//Page<Product> findProductsByBrandAndColorAndSize(String brand, String color, String size, Pageable pageable);
 
 }

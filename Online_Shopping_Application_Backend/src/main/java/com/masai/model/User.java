@@ -26,7 +26,6 @@ public class User {
 	@Size(min = 5,max = 19,message = "please provide a suitable password")
 	private String password;
 	
-	@NotBlank(message = "role can not be blank")
 	private String role;
 	
 	

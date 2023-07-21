@@ -3,6 +3,8 @@ package com.masai.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -24,7 +26,7 @@ public class Cart {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cartId;
 	
-	@OneToOne(mappedBy = "cart")
+	@OneToOne(mappedBy = "cart",cascade = CascadeType.ALL)
 	private Customer customer;
 	
 	@OneToMany(fetch = FetchType.EAGER)
