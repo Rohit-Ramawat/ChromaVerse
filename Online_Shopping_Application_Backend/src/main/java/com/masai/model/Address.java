@@ -5,8 +5,14 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Embeddable
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Address {
 	
 	@NotBlank(message = "House Number can not be blank")

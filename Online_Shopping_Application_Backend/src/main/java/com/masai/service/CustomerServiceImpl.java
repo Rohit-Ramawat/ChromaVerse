@@ -1,8 +1,8 @@
 package com.masai.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import com.masai.exception.CustomerException;
 import com.masai.model.Cart;
 import com.masai.model.Customer;
@@ -15,6 +15,9 @@ public class CustomerServiceImpl implements CustomerService{
 	
 	@Autowired
     private CustomerRepository customerRepository;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
     // Add a new customer
     public Customer addCustomer(Customer customer) {
@@ -25,9 +28,11 @@ public class CustomerServiceImpl implements CustomerService{
     	 
     	if(opt.isPresent()) throw new CustomerException("Customer with this email is already present");
     	
-    	customer.setRole("ROLE_USER");
+    	customer.setRole("ROLE_USER");                                          //assigning role as a user
     	
-    	Cart cart = new Cart();
+    	customer.setPassword(passwordEncoder.encode(customer.getPassword()));  //encoding password
+    	
+    	Cart cart = new Cart();                                               //assigning cart
     	
     	customer.setCart(cart);
     	
@@ -80,6 +85,35 @@ public class CustomerServiceImpl implements CustomerService{
         return customerRepository.findAll();
         
     }
+
+    
+    //Adding a new admin
+	@Override
+	public Customer addAdmin(Customer admin) {
+		
+		if(admin == null) throw new CustomerException("Null details are not allowed");
+    	
+    	Optional<Customer> opt = customerRepository.findByEmail(admin.getEmail());
+    	 
+    	if(opt.isPresent()) throw new CustomerException("Admin with this email is already present");
+    	
+    	admin.setRole("ROLE_ADMIN");                                     //assigning role as a admin
+    	
+    	admin.setPassword(passwordEncoder.encode(admin.getPassword()));  //encoding password
+    	
+		return customerRepository.save(admin);
+	}
+
+	
+	//for fetching customer details by email
+	@Override
+	public Customer getCustomerDetailsByEmail(String email) {
+		
+		return customerRepository.findByEmail(email)
+				.orElseThrow(() -> new CustomerException("Customer Not found with Email: "+email));
+		
+	}
+    
     
 }
 

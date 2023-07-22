@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.masai.model.Product;
 import com.masai.service.ProductService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 @RestController
@@ -24,6 +25,7 @@ public class ProductController {
 	@Autowired
 	public ProductService productService;
 
+	@SecurityRequirement(name = "demo-openapi")
 	@GetMapping("/products") // Endpoint to retrieve all products
 	public ResponseEntity<List<Product>> getAllProducts(@RequestParam(defaultValue = "0") Integer page,
 			@RequestParam(defaultValue = "10") int pageSize) {
@@ -31,24 +33,28 @@ public class ProductController {
 		return new ResponseEntity<>(products, HttpStatus.OK);
 	}
 
+	@SecurityRequirement(name = "demo-openapi")
 	@PostMapping("/products") // Endpoint to add a new product
 	public ResponseEntity<Product> addProduct(@Valid @RequestBody Product product) {
 		Product addedProduct = productService.addProduct(product);
 		return new ResponseEntity<>(addedProduct, HttpStatus.CREATED);
 	}
 
+	@SecurityRequirement(name = "demo-openapi")
 	@PutMapping("/products") // Endpoint to update an existing product
 	public ResponseEntity<Product> updateProduct(@RequestBody Product product) {
 		Product updatedProduct = productService.updateProduct(product);
 		return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
 	}
 
+	@SecurityRequirement(name = "demo-openapi")
 	@GetMapping("/products/{id}") // Endpoint to retrieve a product by its ID
 	public ResponseEntity<Product> getProductById(@PathVariable Integer id) {
 		Product product = productService.viewProductById(id);
 		return new ResponseEntity<>(product, HttpStatus.OK);
 	}
 
+	@SecurityRequirement(name = "demo-openapi")
 	@GetMapping("/products/category/{cname}") // Endpoint to retrieve products by category name
 	public ResponseEntity<List<Product>> getProductsByCategory(@PathVariable String cname,
 			@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") Integer pageSize) {
@@ -56,12 +62,14 @@ public class ProductController {
 		return new ResponseEntity<>(products, HttpStatus.OK);
 	}
 
+	@SecurityRequirement(name = "demo-openapi")
 	@DeleteMapping("/products/{pid}") // Endpoint to remove a product by its ID
 	public ResponseEntity<Product> removeProduct(@PathVariable Integer pid) {
 		Product removedProduct = productService.removeProduct(pid);
 		return new ResponseEntity<>(removedProduct, HttpStatus.OK);
 	}
-
+	
+	@SecurityRequirement(name = "demo-openapi")
 	@GetMapping("/products/search") // Endpoint to search products by keywords
 	public ResponseEntity<List<Product>> searchProducts(@RequestParam String keyword,
 			@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") Integer pageSize) {
@@ -69,6 +77,7 @@ public class ProductController {
 		return new ResponseEntity<>(products, HttpStatus.OK);
 	}
 
+	@SecurityRequirement(name = "demo-openapi")
 	@GetMapping("/products/sorted") // Endpoint to sort products
 	public ResponseEntity<List<Product>> getSortedProductsByPrice(@RequestParam(defaultValue = "desc") String sortOrder,
 			@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") Integer pageSize) {
@@ -76,6 +85,7 @@ public class ProductController {
 		return new ResponseEntity<>(products, HttpStatus.OK);
 	}
 
+	@SecurityRequirement(name = "demo-openapi")
 	@GetMapping("/products/filter") // Endpoint to filter products
 	public ResponseEntity<List<Product>> filterProducts(@RequestParam(required = false) String brand,
 			@RequestParam(required = false) String color, @RequestParam(required = false) String size,
