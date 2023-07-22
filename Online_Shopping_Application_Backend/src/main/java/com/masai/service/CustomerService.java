@@ -18,4 +18,8 @@ public interface CustomerService {
 
    
     public List<Customer> viewAllCustomers();
+    
+    public Customer addAdmin(Customer admin);
+    
+    public Customer getCustomerDetailsByEmail(String email);
 }

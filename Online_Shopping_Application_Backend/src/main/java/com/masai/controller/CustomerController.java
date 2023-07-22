@@ -10,20 +10,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.masai.model.Customer;
 import com.masai.service.CustomerService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
+
 @RestController
-@RequestMapping("/customers")
 public class CustomerController {
 	
 	@Autowired
     private CustomerService customerService;
 
-    @PostMapping
+    @PostMapping("/customers")
     public ResponseEntity<Customer> addCustomer(@Valid @RequestBody Customer customer) {
     	
     	Customer savedCustomer = customerService.addCustomer(customer);
@@ -32,7 +32,8 @@ public class CustomerController {
         
     }
 
-    @PutMapping("/{customerId}")
+    @SecurityRequirement(name = "demo-openapi")
+    @PutMapping("/customers/{customerId}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable Integer customerId, 
     												@Valid @RequestBody Customer customer) {
         
@@ -41,7 +42,8 @@ public class CustomerController {
         return new ResponseEntity<Customer>(updatedCustomer, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{customerId}")
+    @SecurityRequirement(name = "demo-openapi")
+    @DeleteMapping("/customers/{customerId}")
     public ResponseEntity<Customer> removeCustomer(@PathVariable Integer customerId) {
     	
     	Customer deletedCustomer = customerService.removeCustomer(customerId);
@@ -49,7 +51,8 @@ public class CustomerController {
         return new ResponseEntity<Customer>(deletedCustomer, HttpStatus.OK);
     }
 
-    @GetMapping("/{customerId}")
+    @SecurityRequirement(name = "demo-openapi")
+    @GetMapping("/customers/{customerId}")
     public ResponseEntity<Customer> viewCustomer(@PathVariable Integer customerId) {
     	
     	Customer fetchedCustomer = customerService.viewCustomerById(customerId);
@@ -57,12 +60,23 @@ public class CustomerController {
     	return new ResponseEntity<Customer>(fetchedCustomer, HttpStatus.OK);
     }
 
-    @GetMapping
+    @SecurityRequirement(name = "demo-openapi")
+    @GetMapping("/customers")
     public ResponseEntity<List<Customer>> viewAllCustomers() {
     	
         List<Customer> customers = customerService.viewAllCustomers();
         
         return new ResponseEntity<List<Customer>>(customers, HttpStatus.OK);  
+    }
+    
+    @SecurityRequirement(name = "demo-openapi")
+    @PostMapping("/admins")
+    public ResponseEntity<Customer> addAdminHandler(@Valid @RequestBody Customer admin) {
+    	
+    	Customer savedAdmin = customerService.addAdmin(admin);
+        
+        return new ResponseEntity<Customer>(savedAdmin, HttpStatus.CREATED);
+        
     }
 }
 

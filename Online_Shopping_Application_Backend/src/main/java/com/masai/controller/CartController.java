@@ -19,6 +19,8 @@ import com.masai.model.Product;
 import com.masai.service.CartService;
 import com.masai.service.ProductService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 @RestController
 @RequestMapping("/carts")
 public class CartController {
@@ -26,31 +28,38 @@ public class CartController {
 	@Autowired
 	private CartService cartService;
 	
-	@PostMapping("/{cartId}/add")
+	@SecurityRequirement(name = "demo-openapi")
+	@PostMapping("/{cartId}")
 	public ResponseEntity<Cart> addProductToCart(@PathVariable int cartId, @RequestParam int productId, @RequestParam int quantity){
 		Cart cart = cartService.addProductToCart(cartId, productId, quantity);
 		
 		return new ResponseEntity<>(cart, HttpStatus.CREATED);
 	}
 	
-	@DeleteMapping("/{cartId}/remove")
+	@SecurityRequirement(name = "demo-openapi")
+	@DeleteMapping("/{cartId}")
 	public ResponseEntity<Cart> removeProductFromCart(@PathVariable int cartId,@RequestParam int productId){
 		
 		Cart cart = cartService.removeProductFromCart(cartId, productId);
 		return new ResponseEntity<>(cart, HttpStatus.OK);
 	}
 	
-	@PutMapping("/{cartId}/update")
+	@SecurityRequirement(name = "demo-openapi")
+	@PutMapping("/{cartId}")
 	public ResponseEntity<Cart> updateProductQuantity(@PathVariable int cartId,@RequestParam int productId,@RequestParam int quantity){
 		Cart cart = cartService.updateProductQuantity(cartId, productId, quantity);
 		return new ResponseEntity<>(cart, HttpStatus.OK);
 	}
-	@DeleteMapping("/{cartId}/removeAll")
+	
+	@SecurityRequirement(name = "demo-openapi")
+	@DeleteMapping("/removeAll/{cartId}")
 	public ResponseEntity<Cart> removeAllProducts(@PathVariable int cartId){
 		Cart cart = cartService.removeAllProducts(cartId);
 		return new ResponseEntity<>(cart, HttpStatus.OK);
 	}
-	@GetMapping("/{cartId}/view")
+	
+	@SecurityRequirement(name = "demo-openapi")
+	@GetMapping("/view/{cartId}")
 	public ResponseEntity<List<Product>> viewAllProducts(@PathVariable int cartId){
 		List<Product> products = cartService.viewAllProducts(cartId);
 		return new ResponseEntity<>(products, HttpStatus.OK);
