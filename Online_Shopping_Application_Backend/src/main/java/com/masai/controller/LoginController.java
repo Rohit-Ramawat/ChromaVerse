@@ -20,12 +20,12 @@ public class LoginController {
 	
 	@SecurityRequirement(name = "demo-openapi")
 	@GetMapping("/signIn")
-	public ResponseEntity<String> getLoggedInCustomerDetailsHandler(Authentication auth){
+	public ResponseEntity<Customer> getLoggedInCustomerDetailsHandler(Authentication auth){
 		
 		System.out.println(auth); // this Authentication object having Principle object details
 		
 		Customer customer = customerService.getCustomerDetailsByEmail(auth.getName());
 		 
-		return new ResponseEntity<>(customer.getFirstName()+" logged in successfully", HttpStatus.ACCEPTED);		
+		return new ResponseEntity<Customer>(customer, HttpStatus.ACCEPTED);		
 	}
 }
