@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.security.SecurityScheme;
 @SpringBootApplication
 @ComponentScan(basePackages = "com.masai")
 @OpenAPIDefinition(info = @Info(title = "Online Shopping API", version = "1.0", description = "Shopping Information"))
-@SecurityScheme(name = "demo-openapi", scheme = "basic", type = SecuritySchemeType.HTTP, in = SecuritySchemeIn.HEADER)
+@SecurityScheme(name = "demo-openapi", scheme = "bearer", type = SecuritySchemeType.HTTP, in = SecuritySchemeIn.HEADER)
 public class OnlineShoppingApplicationBackendApplication {
 
 	public static void main(String[] args) {
