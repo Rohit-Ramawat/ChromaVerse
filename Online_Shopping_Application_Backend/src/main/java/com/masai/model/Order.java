@@ -29,7 +29,7 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer orderId;
 	
-	@JsonFormat(pattern = "dd/MM/YYYY")
+	@JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate orderDate;
     
     private String status = "pending";
