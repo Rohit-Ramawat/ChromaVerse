@@ -1,6 +1,5 @@
 package com.masai.model;
 
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,7 +28,10 @@ public class Product {
 	private String productName;
 	
 	@Min(value = 1,message = "price can not be zero or negative")
-	private double price;
+	private Double price;
+	
+	@NotBlank(message = "Image URL can not be blank")
+	private String image_URL;
 	
 	@NotBlank(message = "description can not be blank")
 	@Size(min = 2,max = 120,message = "please provide a valid description")

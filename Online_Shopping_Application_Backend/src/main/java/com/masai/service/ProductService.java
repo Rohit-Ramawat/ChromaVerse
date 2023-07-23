@@ -3,7 +3,7 @@ package com.masai.service;
 
 import java.util.List;
 
-
+import com.masai.model.Category;
 import com.masai.model.Product;
 
 public interface ProductService {
@@ -16,13 +16,17 @@ public interface ProductService {
 
 	public Product removeProduct(Integer pid);
 
-	public List<Product> viewAllProducts(Integer page, Integer pageSize);
+	public List<Product> viewAllProducts(Integer page);
 
-	public List<Product> viewProductByCategory(String cname, Integer page, Integer pageSize);
-	
-	public List<Product> searchProducts(String keyword, Integer page, Integer pageSize);
-	
-	public List<Product> getSortedProductsByPrice(String sortOrder, Integer page, Integer pageSize);
-	
-	public List<Product> filterProducts(String brand, String color, String size, Integer page, Integer pageSize);
+	public List<Product> viewProductByCategory(String cname, Integer page);
+
+	public List<Product> searchProducts(String keyword, Integer page);
+
+	public List<Product> getSortedProductsByPrice(String sortOrder, Integer page);
+
+	public List<Category> getCategory();
+
+	public List<String> getBrands();
+
+	public List<Product> filterProducts(List<String> categories, List<String> brands, Double minPrice, Double maxPrice,  int page,  String sortOrder);
 }

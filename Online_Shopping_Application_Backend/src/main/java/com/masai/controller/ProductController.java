@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.masai.model.Category;
 import com.masai.model.Product;
 import com.masai.service.ProductService;
 
@@ -27,9 +30,8 @@ public class ProductController {
 
 	@SecurityRequirement(name = "demo-openapi")
 	@GetMapping("/products") // Endpoint to retrieve all products
-	public ResponseEntity<List<Product>> getAllProducts(@RequestParam(defaultValue = "0") Integer page,
-			@RequestParam(defaultValue = "10") int pageSize) {
-		List<Product> products = productService.viewAllProducts(page, pageSize);
+	public ResponseEntity<List<Product>> getAllProducts(@RequestParam(defaultValue = "0") Integer page) {
+		List<Product> products = productService.viewAllProducts(page);
 		return new ResponseEntity<>(products, HttpStatus.OK);
 	}
 
@@ -57,8 +59,8 @@ public class ProductController {
 	@SecurityRequirement(name = "demo-openapi")
 	@GetMapping("/products/category/{cname}") // Endpoint to retrieve products by category name
 	public ResponseEntity<List<Product>> getProductsByCategory(@PathVariable String cname,
-			@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") Integer pageSize) {
-		List<Product> products = productService.viewProductByCategory(cname, page, pageSize);
+			@RequestParam(defaultValue = "0") int page) {
+		List<Product> products = productService.viewProductByCategory(cname, page);
 		return new ResponseEntity<>(products, HttpStatus.OK);
 	}
 
@@ -72,26 +74,38 @@ public class ProductController {
 	@SecurityRequirement(name = "demo-openapi")
 	@GetMapping("/products/search") // Endpoint to search products by keywords
 	public ResponseEntity<List<Product>> searchProducts(@RequestParam String keyword,
-			@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") Integer pageSize) {
-		List<Product> products = productService.searchProducts(keyword, page, pageSize);
+			@RequestParam(defaultValue = "0") int page) {
+		List<Product> products = productService.searchProducts(keyword, page);
 		return new ResponseEntity<>(products, HttpStatus.OK);
 	}
+
 
 	@SecurityRequirement(name = "demo-openapi")
 	@GetMapping("/products/sorted") // Endpoint to sort products
 	public ResponseEntity<List<Product>> getSortedProductsByPrice(@RequestParam(defaultValue = "desc") String sortOrder,
-			@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") Integer pageSize) {
-		List<Product> products = productService.getSortedProductsByPrice(sortOrder, page, pageSize);
+			@RequestParam(defaultValue = "0") int page) {
+		List<Product> products = productService.getSortedProductsByPrice(sortOrder, page);
 		return new ResponseEntity<>(products, HttpStatus.OK);
 	}
 
-	@SecurityRequirement(name = "demo-openapi")
-	@GetMapping("/products/filter") // Endpoint to filter products
-	public ResponseEntity<List<Product>> filterProducts(@RequestParam(required = false) String brand,
-			@RequestParam(required = false) String color, @RequestParam(required = false) String size,
-			@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "10") Integer pageSize) {
-		List<Product> products = productService.filterProducts(brand, color, size, page, pageSize);
-		return new ResponseEntity<>(products, HttpStatus.OK);
+
+  @SecurityRequirement(name = "demo-openapi")
+	@GetMapping("/products/filter")
+	public ResponseEntity<List<Product>> filterProducts(@RequestParam(required = false) List<String> category,
+	        @RequestParam(required = false) List<String> brand, @RequestParam(required = false) Double minPrice,
+	        @RequestParam(required = false) Double maxPrice, @RequestParam(defaultValue = "0") int page,@RequestParam String sortOrder) {
+	    return new ResponseEntity<>(productService.filterProducts(category, brand, minPrice, maxPrice, page, sortOrder), HttpStatus.OK);
 	}
 
+
+
+	@GetMapping("/products/category")
+	public ResponseEntity<List<Category>> getCategory() {
+		return new ResponseEntity<List<Category>>(productService.getCategory(), HttpStatus.OK);
+	}
+
+	@GetMapping("/products/brand")
+	public ResponseEntity<List<String>> getBrand() {
+		return new ResponseEntity<List<String>>(productService.getBrands(), HttpStatus.OK);
+	}
 }
