@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="/CSS_FILES/cart.css">
+</head>
+<body>
+    <h1 id="shopping">Shopping Cart</h1>
+    <section id="cart-section">
+  <div class="cart-container">
+    <div class="product-container" id="productContainer">
+      <!-- Products will be appended here -->
+    </div>
+  </div>
+  <div class="transaction-details">
+    <h3 style="text-align: center;">Order Summary</h3>
+    <div class="cart-summary">
+        <div class="summary-item">
+          <span>Subtotal:</span>
+          <span id="subtotal">$0.00</span>
+        </div>
+        <div class="summary-item">
+          <span>Shipping:</span>
+          <span id="shipping">$0.00</span>
+        </div>
+        <div class="summary-item">
+          <span>Total:</span>
+          <span id="total">$0.00</span>
+        </div>
+      </div>
+    
+  <button class="place-order-button">Place Order</button>
+  </div>
+    </section>
+</body>
+<script src="/JAVASCRIPT_FILES/cart.js"></script>
+</html>

@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.masai.exception.CartException;
 import com.masai.model.Cart;
+import com.masai.model.Customer;
 import com.masai.model.Product;
 import com.masai.repository.CartRepository;
+import com.masai.repository.CustomerRepository;
 import com.masai.repository.ProductRepository;
 
 @Service
@@ -18,6 +20,9 @@ public class CartServiceImp implements CartService {
 	private CartRepository cartRepo;
 	@Autowired
 	private ProductRepository productRepo;
+	
+	@Autowired
+	private CustomerRepository cusRepo;
 	
 	
 	@Override
