@@ -65,48 +65,55 @@ signupbtn.addEventListener('click', (e) => {
       .then(res => res.json())
       .then(data => console.log(data))
       .catch(error =>{
-console.log(error)
+      console.log(error)
       })
 })
 
 signinbtn.addEventListener("click", loginUser);
   
 function loginUser(e){
-    e.preventDefault()
-    const loginObj = {
-        email: email.value,
-        password: password.value,
-      };
+
+      e.preventDefault()
+
     
-      // Encode the credentials for Basic Authentication
-      const encodedCredentials = btoa(`${loginObj.email}:${loginObj.password}`);
+      var email = document.getElementById("username").value
+      var password = document.getElementById("password").value
+      
+    
+      // Make GET request to fetch JWT token
+      var authHeader = "Basic " + btoa(email + ":" + password);
+
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Authorization", authHeader);
     
       // Set up the fetch options with the Basic Authentication header
-      const options = {
-        method: "GET",
-        headers: {
-            "Content-type":"application/json",
-          "Authorization": `Basic ${encodedCredentials}`,
-        },
+      var requestOptions = {
+          method: "GET",
+          headers: myHeaders,
+          redirect: "follow",
       };
     
       // Send the GET request to the /signIn endpoint
-      fetch('http://localhost:8888/signIn', options)
-        .then(res => {
-          if (!res.ok) {
-            throw new Error(`Request failed with status ${res.status}`);
-          }
-          return res.json();
-        })
-        .then(data => {
-          // Handle the response data (customer details)
-          console.log(data);
-          // Further process the response data as needed
-        })
-        .catch(error => {
-          // Handle any errors that occurred during the request
-          console.error('Error during login:', error.message);
-          // You can take appropriate actions to handle the error
-        });
+      fetch('http://localhost:8888/signIn', requestOptions)
+      .then((response) => {
+        if (response.ok) {
+          var token = response.headers.get("Authorization");
+          localStorage.setItem("custtoken", token);
+          console.log("Token stored:", token);
+        } else {
+          console.log("Error:", response.status);
+        }
+        return response.json();
+      })
+      .then((result) => {
+        var customerId = result.customerId;
+        var customername = result.name;
+        localStorage.setItem("customername", customername);
+        console.log(result);
+        localStorage.setItem("customerId", customerId);
+      })
+      .catch((error) => console.log("error", error));
+  
 }  
   
