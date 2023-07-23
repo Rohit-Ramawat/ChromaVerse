@@ -58,9 +58,11 @@ public class AppConfig {
 		      
 		      .requestMatchers(HttpMethod.GET, "/carts/view/**").hasRole("USER")
 		      
-		      .requestMatchers(HttpMethod.GET, "/customers/**","/products","/products/category/{cname}",
-		    		  "/products/search","/products/sorted","/products/filter","/orders/**","/orders/date")
+		      .requestMatchers(HttpMethod.GET, "/customers/**","/orders/**","/orders/date")
 		      								.hasAnyRole("ADMIN","USER")
+		      								
+		      .requestMatchers(HttpMethod.GET,"/products","/products/category/{cname}",
+		    		  "/products/search","/products/sorted","/products/filter" ).permitAll()								
 		      											
 		      .requestMatchers(HttpMethod.POST, "/admins","/products").hasRole("ADMIN")
 		      
