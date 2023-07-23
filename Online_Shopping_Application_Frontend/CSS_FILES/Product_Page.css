@@ -1,0 +1,154 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 2fr 20fr;
+}
+
+#sort {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: white;
+    grid-column: 1/ span 2;
+    text-align: right;
+    border: 1px solid #ccc;
+    padding: 3vh 10vh;
+    border: 1px solid rgb(174, 171, 171);
+  }
+  
+  #sort label {
+    margin-right: 10px;
+    font-weight: bolder;
+    color: #333;
+  }
+  
+  #sort select {
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #444;
+    cursor: pointer;
+  }
+  
+  
+
+#filter_main {
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+#productContainer {
+    display: grid;
+    grid-template-columns: repeat(1 , 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+
+
+/* Media query for larger screens */
+@media (min-width: 768px) {
+    #productContainer {
+        grid-template-columns: repeat(2, 1fr);
+        /* Two columns on screens larger than 768px */
+    }
+}
+
+/* Media query for even larger screens */
+@media (min-width: 1024px) {
+    #productContainer {
+        grid-template-columns: repeat(4, 1fr);
+        /* Three columns on screens larger than 1024px */
+    }
+}
+
+#productContainer div {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#productContainer div:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#productContainer>div {
+    margin-top: 40px;
+    height: 60vh;
+}
+
+#productContainer img {
+    width: 100%;
+    height: 30vh;
+}
+
+#productContainer button {
+    height: 28px;
+    width: 100%;
+    border-radius: 13px;
+    border: 0px;
+    background-color: #8863fb;
+    color: white;
+}
+
+
+/* Filter */
+
+/* Base styles for the filter main container */
+#filter_main {
+    padding: 20px;
+  }
+  
+  /* Apply flexbox to arrange items in a column */
+  #filter_main .f {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    
+  }
+  
+  /* Add space between category/brand and the checkboxes */
+  #filter_main .f h3 {
+    margin-bottom: 5px;
+  }
+  
+  /* Ensure each category/brand and its checkboxes are displayed in a column */
+  #filter_main .f #categoryCheckBox,
+  #filter_main .f #brandCheckBox {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  /* Ensure each category/brand checkbox is displayed in a new line */
+  #filter_main .f #categoryCheckBox label,
+  #filter_main .f #brandCheckBox label {
+    width: 100%;
+  }
+  
+  /* Adjust the width of checkboxes for better alignment */
+  #filter_main .f #categoryCheckBox input[type="checkbox"],
+  #filter_main .f #brandCheckBox input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  /* Styling for the buttons */
+  #filter_main button {
+    margin-top: 10px;
+    background-color: #8863fb;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #filter_main button:hover {
+    background-color: #704add;
+  }
+  
+  

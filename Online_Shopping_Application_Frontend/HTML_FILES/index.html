@@ -1,11 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
+    <link rel="stylesheet" href="/CSS_FILES/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 </head>
+
 <body>
-    
+    <header>
+        <a href="/index.html" class="logo">Chroma Verse</a>
+        <button><i class="fa-solid fa-magnifying-glass"></i> <input type="text"></button>
+
+        <nav class="navigations">
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Shop</a></li>
+            <li><a href="/">Blog</a></li>
+            <li><a href="/">About</a></li>
+            <li><a href="/">Contact</a></li>
+        </nav>
+
+        <div class="nav-actions">
+            <button><i class="fa-solid fa-cart-shopping"></i></button>
+            <button><i class="fa-solid fa-user"></i></button>
+        </div>
+
+        <button class="menu-btn">
+            <div></div>
+            <div></div>
+        </button>
+    </header>
+
+    <main>
+        <section class="carousel">
+            <h3>Every Product is made with all our heart</h3>
+            <p>Easy shopping for interior decoration with best price and 5% off charges </p>
+            <a href="" class="read-now-btn">Read Now</a>
+        </section>
+        <div class="swiper product-display-box mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide display-card">
+                    <div class="display-card-actions">
+                        <h3 class="product-category">Electronics & Home</h3>
+                        <a class="product-category-link" href="/">&RightArrow; Shop Now</a>
+                    </div>
+                    <img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1689876681/Croma%20Assets/CMS/LP%20Page%20Banners/2023/HP%20Top%20Rotating%20Deals/21st%20July/HP_WKS_18July2023_pjqffs.jpg?tr=w-2048" class="category-image"
+                        alt="category-image">
+                </div>
+                <div class="swiper-slide display-card">
+                    <div class="display-card-actions">
+                        <h3 class="product-category">Lamp Collections</h3>
+                        <a class="product-category-link" href="/">&RightArrow; Shop Now</a>
+                    </div>
+                    <img src="./images/interior-design-living-area-reception-with-armchair.jpg" class="category-image"
+                        alt="category-image">
+                </div>
+                <div class="swiper-slide display-card">
+                    <div class="display-card-actions">
+                        <h3 class="product-category">Home decoration</h3>
+                        <a class="product-category-link" href="/">&RightArrow; Shop Now</a>
+                    </div>
+                    <img src="./images/mock-up-living-room-interior-with-armchair.jpg" class="category-image"
+                        alt="category-image">
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+
+        <section class="products">
+            <h1 class="products-head-label">Featured Product</h1>
+            <div class="products-container">
+                <!-- Items Added Using Js -->
+            </div>
+        </section>
+
+        <!-- <section class="services">
+            <div class="service-list">
+                <img src="./icons/customer-support.png" class="service-icon" alt="">
+                <h3>24/7 support</h3>
+                <p>Available customer service 24/7</p>
+            </div>
+            <div class="service-list">
+                <img src="./icons/membership.png" class="service-icon" alt="">
+                <h3>Membership offers</h3>
+                <p>Great offers/discount for memebers</p>
+            </div>
+            <div class="service-list">
+                <img src="./icons/free-shipping.png" class="service-icon" alt="">
+                <h3>Free shipping</h3>
+                <p>Shipping with no cost within USA</p>
+            </div>
+            <div class="service-list">
+                <img src="./icons/money-back.png" class="service-icon" alt="">
+                <h3>Moneyback guarantee</h3>
+                <p>Refund if product doesn't meet expectation.</p>
+            </div>
+        </section> -->
+
+    </main>
+
+    <footer>
+        <div class="footer-sections-wrapper">
+            <div>
+                <h2 class="footer-section-label">About us</h2>
+                <p>Online Shopping Site</p>
+                <div class="social-actions">
+                    <a href="/facebook" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="/instagram" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="/twitter" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="/youtube" class="social-link"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="/googleplus" class="social-link"><i class="fa-brands fa-google-plus-g"></i></a>
+                </div>
+            </div>
+            <div>
+                <h2 class="footer-section-label">Customers Service</h2>
+                <div class="customers-service-list">
+                    <a href="/">Shipping & Returns</a>
+                    <a href="/">My Account</a>
+                    <a href="/">Product Warranty</a>
+                </div>
+            </div>
+            <div>
+                <h2 class="footer-section-label">Contact us</h2>
+                <div class="contact-actions">
+                    <a href="tel:+"><i class="fa-solid fa-phone"> <span>+234 0000 111</span></i></a>
+                    <a href="mailto:"><i class="fa-solid fa-paper-plane"></i><span>email</span></a>
+                    <address><i class="fa-solid fa-location-pin"></i><span>124, Eminent City </span></address>
+                </div>
+            </div>
+            <div>
+                <h2 class="footer-section-label">We're on instagram</h2>
+                <div class="instgram-reels">
+                    <a href="">
+                        <img src="./images/vertical-shot-chair-with-net.jpg" alt="" class="instagram-reels-post">
+                    </a>
+                    <a href="">
+                        <img src="./images/nightstand.jpg" alt="" class="instagram-reels-post">
+                    </a>
+                    <a href="">
+                        <img src="./images/wooden-chair-with-black-leather-seat.jpg" alt=""
+                            class="instagram-reels-post">
+                    </a>
+                    <a href="">
+                        <img src="./images/clothing-stand.jpg" alt="" class="instagram-reels-post">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-subfoot">
+            <nav class="subfoot-actions">
+                <li><a href="">Terms of Service</a></li>
+                <li><a href="">Privacy Policy</a></li>
+                <li><a href="">Cookie Policy</a></li>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="/JAVASCRIPT_FILES/index.js"></script>
+
 </body>
+
 </html>

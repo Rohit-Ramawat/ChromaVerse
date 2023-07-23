@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <link rel="stylesheet" href="/Online_Shopping_Application_Frontend/CSS_FILES/Product_Page.css">
+</head>
+
+<body>
+    <header>
+        <!-- Add your website header content here -->
+    </header>
+
+    <main>
+        <div style="height: 80px;"></div>
+        <div id="sort">
+            <label for="sortPrice">Sort by:</label>
+            <select id="sortPrice">
+                <option value="select"> select</option>
+                <option value="asc"> Price: Low to High</option>
+                <option value="desc">Price: High to Low</option>
+            </select>
+        </div>
+
+        <div id="filter_main">
+            <h1>Filters</h1>
+            
+            <div class="f">
+              <h3>Category:</h3>
+              <div id="categoryCheckBox">
+                <!-- Checkbox options will be dynamically added here -->
+              </div>
+            </div>
+        
+            <div class="f">
+              <h3>Brand:</h3>
+              <div id="brandCheckBox">
+                <!-- Brand checkboxes will be dynamically added here -->
+              </div>
+            </div>
+        
+            <div>
+              <h3 for="filterMinPrice">Minimum Price:</h3>
+              <input type="number" id="filterMinPrice" placeholder="Min Price">
+            </div>
+        
+            <div>
+              <h3 for="filterMaxPrice">Maximum Price:</h3>
+              <input type="number" id="filterMaxPrice" placeholder="Max Price">
+            </div>
+            <button id="applyButton">Apply</button>
+            <button id="clearButton">Clear all</button>
+          </div>
+
+
+
+
+        <div id="productContainer" class="product-container">
+            <!-- Products will be dynamically added here -->
+        </div>
+
+    </main>
+
+    <footer>
+        <!-- Add your website footer content here -->
+    </footer>
+
+    <script src="/Online_Shopping_Application_Frontend/JAVASCRIPT_FILES/Product_Page.js"></script>
+</body>
+
+</html>
