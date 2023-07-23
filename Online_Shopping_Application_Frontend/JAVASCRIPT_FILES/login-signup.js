@@ -94,6 +94,7 @@ function loginUser(e){
           redirect: "follow",
       };
     
+      const varification = "";
       // Send the GET request to the /signIn endpoint
       fetch('http://localhost:8888/signIn', requestOptions)
       .then((response) => {
@@ -111,6 +112,12 @@ function loginUser(e){
         var customername = result.name;
         localStorage.setItem("customername", customername);
         console.log(result);
+        console.log(result.role);
+        if(result.role == 'ROLE_USER'){
+          window.location.href = "index.html";
+        }else{
+          window.location.href = "admin.html";
+        }
         localStorage.setItem("customerId", customerId);
       })
       .catch((error) => console.log("error", error));
