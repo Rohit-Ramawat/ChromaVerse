@@ -23,8 +23,12 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 //			+ "AND (:brand IS NULL OR p.brand = :brand)")
 //	List<Product> filterProducts(String category, String productName, Double minPrice, Double maxPrice, String brand);
 
+
+	
+
 	@Query("SELECT DISTINCT p.brand FROM Product p")
 	List<String> findAllBrands();
+
 
 
 }
