@@ -99,7 +99,7 @@ function loginUser(e){
       .then((response) => {
         if (response.ok) {
           var token = response.headers.get("Authorization");
-          localStorage.setItem("custtoken", token);
+          localStorage.setItem("jwtToken", JSON.stringify(token));
           console.log("Token stored:", token);
         } else {
           console.log("Error:", response.status);
