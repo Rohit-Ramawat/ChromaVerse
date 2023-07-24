@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/Online_Shopping_Application_Frontend/CSS_FILES/admin.css">
+    <title>DashBoard</title>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <!-- Sidebar Section  -->
+
+        <aside>
+            <div class="toggle">
+                <div class="logo">
+                    <img src="/Online_Shopping_Application_Frontend/img/Chromaverse2.jpeg" alt="">
+                    <h2>Hello <span class="danger">Admin
+                        </span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-symbols-sharp">
+                        close
+                    </span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="#dashboard" class="clicked active">
+                    <span class="material-symbols-sharp">
+                        dashboard
+                        </span>
+                        <h3>Dashboard</h3>
+                </a>
+                <a href="#all-orders" class="clicked">
+                    <span class="material-symbols-sharp">
+                        mail_outline
+                        </span>
+                        <h3>Order-Placed</h3>
+                        <span class="message-count">25</span>
+                </a>
+                <a href="adminproduct.html" class="clicked">
+                    <span class="material-symbols-sharp">
+                        receipt_long
+                        </span>
+                        <h3>Products</h3>
+                </a>
+                <a href="#analytics" class="clicked">
+                    <span class="material-symbols-sharp">
+                        insights
+                        </span>
+                        <h3>Sales-Analytics</h3>
+                </a>
+                <a href="#" class="clicked">
+                    
+                        <span class="material-symbols-sharp">
+                            list_alt
+                            </span>
+                            <h3>All-Orders</h3>
+                </a>
+                <!-- <a href="#">
+                    <span class="material-symbols-sharp">
+                        inventory
+                        </span>
+                        <h3>Sale Data</h3>
+                </a> -->
+                <!-- <a href="#">
+                    <span class="material-symbols-sharp">
+                        report_gmailerrorred
+                        </span>
+                        <h3>Reports</h3>
+                </a> -->
+                <a href="#" class="clicked">
+                    <span class="material-symbols-sharp">
+                        settings
+                        </span>
+                        <h3>Settings</h3>
+                </a>
+                <a href="#" class="clicked">
+                    <span class="material-symbols-sharp">
+                        add
+                        </span>
+                        <h3>New Logins</h3>
+                </a>
+                <a href="#" class="clicked">
+                    <span class="material-symbols-sharp">
+                        logout
+                        </span>
+                        <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!-- sidebar end here  -->
+
+        <!-- Main Content  -->
+        <main>
+            <section id="dashboard">
+                <h1>Dashboard</h1>
+                <!-- New User start  -->
+                <div class="new-users">
+                    <h2>New Admins</h2>
+                    <div class="user-list">
+                        <div class="user">
+                            <img src="/Online_Shopping_Application_Frontend/img/profile.png" alt="">
+                            <h2>Hello</h2>
+                            <p>Rohit</p>
+                        </div>
+                        <div class="user">
+                            <img src="/Online_Shopping_Application_Frontend/img/profile.png" alt="">
+                            <h2>Hello</h2>
+                            <p>Admin</p>
+                        </div>
+                        <div class="user">
+                            <img src="/Online_Shopping_Application_Frontend/img/profile.png" alt="">
+                            <h2>Hello</h2>
+                            <p>Admin</p>
+                        </div>
+                        <div class="user">
+                            <img src="/Online_Shopping_Application_Frontend/img/addnew.png" alt="">
+                            <h2>More</h2>
+                            <p>New Admin</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- new user end  -->
+    
+                <!-- Recent orders  -->
+                <div class="recent-orders">
+                    <h2>Recent Orders</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order-Id</th>
+                                <th>Order-Name</th>
+                                <th>Order-Img</th>
+                                <th>Order-Des.</th>
+                                <th>Order Brand</th>
+                                <th>Order Quantity</th>
+                                <th>Order. cat</th>
+                                <th>Price</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <a href="#">Show All</a>
+                </div>
+    
+                <!-- Recent orders end -->
+                <!-- all orders  -->
+                
+                <!-- all orders end  -->
+            </section>
+            <section id="all-orders">
+                <div class="recent-orders">
+                    <h2>All Orders</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order-Id</th>
+                                <th>Customer-Name</th>
+                                <th>Product</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <a href="#">Show All</a>
+                </div>
+            </section>
+            <section id="analytics">
+                <h1>Analytics</h1>
+            <!-- Analyses  -->
+            <div class="analyse">
+                <div class="sales">
+                    <div class="status">
+                        <div class="info">
+                            <h3>Total Sales</h3>
+                            <h1>$65,024</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" cy="38"
+                                r="36"></circle>
+                            </svg>
+                            <div class="percentage">
+                                <p>+81%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visits">
+                    <div class="status">
+                        <div class="info">
+                            <h3>Site Visit</h3>
+                            <h1>24,981</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" cy="38"
+                                r="36"></circle>
+                            </svg>
+                            <div class="percentage">
+                                <p>-10%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="searches">
+                    <div class="status">
+                        <div class="info">
+                            <h3>Searches</h3>
+                            <h1>10,250</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" cy="38"
+                                r="36"></circle>
+                            </svg>
+                            <div class="percentage">
+                                <p>+21%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end of Analyses -->
+            <!-- graph start  -->
+            <div class="Sales-difference">
+                <h2>Sales difference</h2>
+                <div class="target-vs-sales--container">
+                    
+                    <div class="section--title">
+                        
+                        <div class="sales--value">
+                            <div class="target">
+                                <i class="ri-checkbox-blank-circle-fill circle"></i>
+                                Target <span>&nbsp; sales</span>
+                            </div>
+                            <div class="current">
+                                <i class="ri-checkbox-blank-circle-fill circle"></i>
+                                Current <span>&nbsp; sales</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="target--vs--sales">
+                        <canvas id="tarsale"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- graph end  -->
+            
+        </section>
+        <section id="all-orders">
+            <div class="recent-orders">
+                <h2>All Orders</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order-Id</th>
+                            <th>Customer-Name</th>
+                            <th>Product</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <a href="#">Show All</a>
+            </div>
+        </section>
+    </main>
+            
+        <!-- Right section  -->
+        <div class="right-section">
+            <div class="nav">
+                <button id="menu-btn">
+                    <span class="material-symbols-sharp">
+                        menu
+                    </span>
+                </button>
+                <div class="dark-mode">
+                    <span class="material-symbols-sharp active">
+                        light_mode
+                        </span>
+                        <span class="material-symbols-sharp">
+                            dark_mode
+                            </span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p><b>Hello</b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="/Images/profile.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="user-profile">
+                <div class="logo">
+                    <img src="/Online_Shopping_Application_Frontend/img/Chromaverse2.jpeg">
+                    <h2>Hello <span style="color: red;">Admin</span></h2>
+                </div>
+            </div>
+            <div class="reminders">
+                <div class="header">
+                    <h2>Reminders</h2>
+                    <span class="material-symbols-sharp">
+                        notifications_none
+                    </span>
+                </div>
+                <div class="notification">
+                    <div class="icon">
+                        <span class="material-symbols-sharp">
+                            volume_up
+                        </span>
+                    </div>
+                    <div class="content">
+                        <div class="info">
+                            <h3>Workshop</h3>
+                            <small class="text-muted">
+                                08:00 AM - 12:00 PM
+                            </small>
+                        </div>
+                        <span class="material-symbols-sharp">
+                            more_vert
+                        </span>
+                    </div>
+                </div>
+
+                <div class="notification deactive">
+                    <div class="icon">
+                        <span class="material-symbols-sharp">
+                            edit
+                        </span>
+                    </div>
+                    <div class="content">
+                        <div class="info">
+                            <h3>Workshop</h3>
+                            <small class="text-muted">
+                                08:00 AM - 12:00 PM
+                            </small>
+                        </div>
+                        <span class="material-symbols-sharp">
+                            more_vert
+                        </span>
+                    </div>
+                </div>
+
+                <div class="notification add-reminder">
+                    <div>
+                        <span class="material-symbols-sharp">
+                            add
+                        </span>
+                        <h3>Add Reminder</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/Online_Shopping_Application_Frontend/JAVASCRIPT_FILES/productadmin.js"></script>
+    <script src="/Online_Shopping_Application_Frontend/JAVASCRIPT_FILES/tarsale.js"></script>
+</body>
+
+</html>
