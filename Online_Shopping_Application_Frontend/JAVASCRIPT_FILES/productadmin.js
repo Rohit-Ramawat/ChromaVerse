@@ -25,12 +25,14 @@ clicked.addEventListener('click', () => {
 })
 
 
+  //logout
+ 
 
 
 
 window.addEventListener("load", () => {
     fetchAndRenderEmployees('http://localhost:8888/products');
-    fetchAndRenderEmployee()
+    // fetchAndRenderEmployee()
 });
 
 
@@ -125,6 +127,7 @@ addpbtn.addEventListener('click', (e) => {
         })
         .then(data => {
             console.log('Product added successfully:', data);
+            location.reload();
         })
         .catch(error => {
             console.error('Error adding product:', error.message);
@@ -184,6 +187,7 @@ function updateProductById(productData) {
         })
         .then(data => {
             console.log('Product updated successfully:', data);
+            location.reload();
         })
         .catch(error => {
             console.error('Error updating product:', error.message);
@@ -291,6 +295,7 @@ function removeProductById(productId) {
                 throw new Error(`Request failed with status ${response.status}`);
             }
             console.log('Product removed successfully.');
+            location.reload();
         })
         .catch(error => {
             console.error('Error removing product:', error.message);
@@ -347,3 +352,4 @@ function getCard(name,email) {
     `;
     return card;
   }
+
