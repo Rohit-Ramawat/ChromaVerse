@@ -1,24 +1,22 @@
 # ChromaVerse
+The primary objective of our online shopping application is to provide a seamless, user-friendly, and secure platform for customers to browse, select, and purchase a wide range of products.
 ## logo:
-# Online Shopping Application
+![logo](https://github.com/Rohit-Ramawat/medical-bells-7477/assets/119414002/ac36806e-2bf8-4fe7-a7a9-0209287f7139)
+
+# Online Shopping Application:
 
 * We have developed REST API for this Online Shopping Application. This API performs all the fundamental CRUD operations of any Online Shopping Application platform with user validation at every step. We also created frontend to use this API.
 * This project is developed by team of 5 Java Back-end Developers during project week in Masai School. 
 
-## Tech Stack
+## Tech Stack:
+This Application utilizes the following technologies:
 
-* Java
-* Spring Framework
-* Spring Boot
-* Spring Data JPA
-* Hibernate
-* MySQL
-* Spring Security
-* Javascript
-* HTML
-* CSS
+- Backend Technologies: Java, Spring Boot, RESTful APIs
+- Frontend Technologies: HTML, CSS, JavaScript
+- Database: MySQL
+- Additional Libraries: Spring Security, Hibernate, Maven
 
-## Modules
+## Modules:
 
 * Login Module
 * Customer Module
@@ -34,6 +32,10 @@
 * Customer Features:
     * Registering themselves with application, and logging in to get the valid JWT token
     * View products and add them into the cart to order. 
+
+## ER Daigram:
+![ER_ChromaVerse](https://github.com/Rohit-Ramawat/medical-bells-7477/assets/119414002/1ab48565-290e-42e3-aa78-23612d7e189b)
+
 
 ## Contributors
 
@@ -65,98 +67,21 @@
 `http://localhost:8088/swagger-ui.html/`
 
 
-## API Module Endpoints
-
-### Login Module
-
-* `POST //login/admin` : Admin can login with username and password provided at the time of registation
-
-
-### Customer Module
-
-* `POST /customers` : Register a new customer with proper data validation
-  
-
-
-### Admin Module
-
-* `POST /admin` : Register a new admin with proper data validation
-
-### Driver Module
-
-* `POST /driver` : Register a new driver with proper data validation
 
 
 
-### Sample API Response for Admin Register
 
-`POST   localhost:8088/admin`
 
-* Request Body
-
-```
-    {
-        "userName": "xyz123",
-        "password": "abcde",
-        "name" : "dummy",
-        "email" : "dummy@gmail.com",
-        "mobileNumber" : "9555555555"
-    }
-```
-
-* Response
-
-```
-   { adminId=1, userName=xyz123, name=dummy, email=dummy@gmail.com, mobileNumber=9555555555 }
-   
-```
  
-### E-R Diagram
-
-
-
-![ERDaigram](https://github.com/abhishekyadav0888/able-laborer-3546/assets/111178057/c9429409-ab13-4e85-b1f5-7f7045b037d8)
 
 
 
 
-### Swagger UI
-
----
 
 
 
----
-
-### Customer and Customer Login Controller
-
----
 
 
 
----
-
-### Admin and Admin Login Controller
-
----
 
 
-
----
-
-### Driver and Driver Login Controller
-
----
-
-
-
----
-
-
-### Trip Controller
-
----
-
-
-
----
