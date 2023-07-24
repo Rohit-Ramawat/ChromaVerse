@@ -1,10 +1,14 @@
+const cart = JSON.parse(localStorage.getItem("cart"));
+const jwt = localStorage.getItem("jwtToken");
+
+const cartId = cart.cartId;
 
 const headers = {
-    Authorization : "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJSYW0iLCJzdWIiOiJKV1QgVG9rZW4iLCJ1c2VybmFtZSI6ImFqaXRAZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOiJST0xFX1VTRVIiLCJpYXQiOjE2OTAxMjU5NDMsImV4cCI6MTY5MDE1NTk0M30.wejTMk7duF7oWkgF4b52wgONwMxfC76602NkgDtpg7U",
+    Authorization : `Bearer${jwt}`,
     "Content-Type": "application/json",
 };
 
-fetch('http://localhost:8888/carts/view/1', {
+fetch(`http://localhost:8888/carts/view/${cartId}`, {
 method:"GET",
 headers: headers,
 })
@@ -51,7 +55,7 @@ function displayProduct(products) {
   
       const productPrice = document.createElement('div');
       productPrice.classList.add('product-price');
-      productPrice.textContent = '$' + product.price;
+      productPrice.textContent = `${'\u20B9'} ${product.price}`
       productDetails.appendChild(productPrice);
 
       const productQuantity = document.createElement('div');
@@ -64,7 +68,7 @@ function displayProduct(products) {
 
       decreaseButton.addEventListener('click', () => {
         const action = decreaseButton.textContent;
-        handleQuantityChange(1, action);
+        handleQuantityChange(product.productId, action);
         location.reload();
       });
   
@@ -79,7 +83,7 @@ function displayProduct(products) {
 
       increaseButton.addEventListener('click', () => {
         const action = increaseButton.textContent;
-        handleQuantityChange(1, action);
+        handleQuantityChange(product.productId, action);
         location.reload();
       });
   
@@ -138,7 +142,7 @@ function displayProduct(products) {
         return;
       }
   // Replace 'UPDATE_CART_QUANTITY_API_ENDPOINT' with the actual API endpoint to update the cart quantity
-  const cartId = 1; // Replace with the actual cart ID or fetch it from the API
+  // Replace with the actual cart ID or fetch it from the API
   const updateQuantityEndpoint = `http://localhost:8888/carts/${cartId}?productId=${productId}&quantity=${newQuantity}`;
 
   const response = await fetch(updateQuantityEndpoint, {
@@ -175,17 +179,14 @@ function updateCartSummary(products) {
   
     // Update the UI with the calculated values
     const subtotalElement = document.getElementById('subtotal');
-    subtotalElement.textContent = '$' + subtotal.toFixed(2);
+    subtotalElement.textContent = `${'\u20B9'} ${subtotal.toFixed(2)}`;
   
     const shippingElement = document.getElementById('shipping');
     shippingElement.textContent = "Free"
   
     const totalElement = document.getElementById('total');
     const total = subtotal + shipping;
-    totalElement.textContent = '$' + total.toFixed(2);
+    totalElement.textContent = `${'\u20B9'} ${total.toFixed(2)}`;
   }
-  
-  
-  
   
    

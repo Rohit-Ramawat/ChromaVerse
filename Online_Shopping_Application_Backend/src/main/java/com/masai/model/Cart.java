@@ -4,6 +4,8 @@ package com.masai.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -26,6 +28,7 @@ public class Cart {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cartId;
 	
+	@JsonIgnore
 	@OneToOne(mappedBy = "cart",cascade = CascadeType.ALL)
 	private Customer customer;
 	

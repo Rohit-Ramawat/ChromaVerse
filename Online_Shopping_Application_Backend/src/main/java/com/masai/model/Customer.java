@@ -49,7 +49,7 @@ public class Customer extends User{
 	@OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
 	private List<Order> orders = new ArrayList<>();
 	
-	@JsonIgnore
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cart_id")
 	private Cart cart;
