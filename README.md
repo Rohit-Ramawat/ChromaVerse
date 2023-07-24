@@ -11,7 +11,7 @@ The primary objective of our online shopping application is to provide a seamles
 ## Tech Stack:
 This Application utilizes the following technologies:
 
-- Backend Technologies: Java, Spring Boot, RESTful APIs
+- Backend Technologies: Java, Spring Boot
 - Frontend Technologies: HTML, CSS, JavaScript
 - Database: MySQL
 - Additional Libraries: Spring Security, Hibernate, Maven
