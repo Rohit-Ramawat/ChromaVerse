@@ -98,12 +98,13 @@ public class ProductController {
 	}
 
 
-
+	@SecurityRequirement(name = "demo-openapi")
 	@GetMapping("/products/category")
 	public ResponseEntity<List<Category>> getCategory() {
 		return new ResponseEntity<List<Category>>(productService.getCategory(), HttpStatus.OK);
 	}
-
+	
+	@SecurityRequirement(name = "demo-openapi")
 	@GetMapping("/products/brand")
 	public ResponseEntity<List<String>> getBrand() {
 		return new ResponseEntity<List<String>>(productService.getBrands(), HttpStatus.OK);
