@@ -40,6 +40,12 @@
                         </span>
                         <h3>Dashboard</h3>
                 </a>
+                <a href="#analytics" class="clicked">
+                    <span class="material-symbols-sharp">
+                        insights
+                        </span>
+                        <h3>Sales-Analytics</h3>
+                </a>
                 <a href="#all-orders" class="clicked">
                     <span class="material-symbols-sharp">
                         mail_outline
@@ -53,12 +59,7 @@
                         </span>
                         <h3>Products</h3>
                 </a>
-                <a href="#analytics" class="clicked">
-                    <span class="material-symbols-sharp">
-                        insights
-                        </span>
-                        <h3>Sales-Analytics</h3>
-                </a>
+                
                 <a href="#" class="clicked">
                     
                         <span class="material-symbols-sharp">
@@ -78,7 +79,7 @@
                         </span>
                         <h3>Reports</h3>
                 </a> -->
-                <a href="#" class="clicked">
+                <!-- <a href="#" class="clicked">
                     <span class="material-symbols-sharp">
                         settings
                         </span>
@@ -89,8 +90,8 @@
                         add
                         </span>
                         <h3>New Logins</h3>
-                </a>
-                <a href="#" class="clicked">
+                </a> -->
+                <a href="" class="clicked" id="logout">
                     <span class="material-symbols-sharp">
                         logout
                         </span>
@@ -131,7 +132,92 @@
                     </div>
                 </div>
                 <!-- new user end  -->
+                <section id="analytics">
+                    <h1>Analytics</h1>
+                <!-- Analyses  -->
+                <div class="analyse">
+                    <div class="sales">
+                        <div class="status">
+                            <div class="info">
+                                <h3>Total Sales</h3>
+                                <h1>$65,024</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle cx="38" cy="38"
+                                    r="36"></circle>
+                                </svg>
+                                <div class="percentage">
+                                    <p>+81%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
     
+                    <div class="visits">
+                        <div class="status">
+                            <div class="info">
+                                <h3>Site Visit</h3>
+                                <h1>24,981</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle cx="38" cy="38"
+                                    r="36"></circle>
+                                </svg>
+                                <div class="percentage">
+                                    <p>-10%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="searches">
+                        <div class="status">
+                            <div class="info">
+                                <h3>Searches</h3>
+                                <h1>10,250</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle cx="38" cy="38"
+                                    r="36"></circle>
+                                </svg>
+                                <div class="percentage">
+                                    <p>+21%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end of Analyses -->
+                <!-- graph start  -->
+                <div class="Sales-difference">
+                    <h2>Sales difference</h2>
+                    <div class="target-vs-sales--container">
+                        
+                        <div class="section--title">
+                            
+                            <div class="sales--value">
+                                <div class="target">
+                                    <i class="ri-checkbox-blank-circle-fill circle"></i>
+                                    Target <span>&nbsp; sales</span>
+                                </div>
+                                <div class="current">
+                                    <i class="ri-checkbox-blank-circle-fill circle"></i>
+                                    Current <span>&nbsp; sales</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="target--vs--sales">
+                            <canvas id="tarsale"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- graph end  -->
+                
+            </section>
                 <!-- Recent orders  -->
                 <div class="recent-orders">
                     <h2>Recent Orders</h2>
@@ -139,7 +225,7 @@
                         <thead>
                             <tr>
                                 <th>Order-Id</th>
-                                <th>Order-Name</th>
+                                <th>Customer-Name</th>
                                 <th>Order-Img</th>
                                 <th>Order-Des.</th>
                                 <th>Order Brand</th>
@@ -159,110 +245,9 @@
                 
                 <!-- all orders end  -->
             </section>
-            <section id="all-orders">
-                <div class="recent-orders">
-                    <h2>All Orders</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Order-Id</th>
-                                <th>Customer-Name</th>
-                                <th>Product</th>
-                                <th>Status</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                    <a href="#">Show All</a>
-                </div>
-            </section>
-            <section id="analytics">
-                <h1>Analytics</h1>
-            <!-- Analyses  -->
-            <div class="analyse">
-                <div class="sales">
-                    <div class="status">
-                        <div class="info">
-                            <h3>Total Sales</h3>
-                            <h1>$65,024</h1>
-                        </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx="38" cy="38"
-                                r="36"></circle>
-                            </svg>
-                            <div class="percentage">
-                                <p>+81%</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="visits">
-                    <div class="status">
-                        <div class="info">
-                            <h3>Site Visit</h3>
-                            <h1>24,981</h1>
-                        </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx="38" cy="38"
-                                r="36"></circle>
-                            </svg>
-                            <div class="percentage">
-                                <p>-10%</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="searches">
-                    <div class="status">
-                        <div class="info">
-                            <h3>Searches</h3>
-                            <h1>10,250</h1>
-                        </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx="38" cy="38"
-                                r="36"></circle>
-                            </svg>
-                            <div class="percentage">
-                                <p>+21%</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end of Analyses -->
-            <!-- graph start  -->
-            <div class="Sales-difference">
-                <h2>Sales difference</h2>
-                <div class="target-vs-sales--container">
-                    
-                    <div class="section--title">
-                        
-                        <div class="sales--value">
-                            <div class="target">
-                                <i class="ri-checkbox-blank-circle-fill circle"></i>
-                                Target <span>&nbsp; sales</span>
-                            </div>
-                            <div class="current">
-                                <i class="ri-checkbox-blank-circle-fill circle"></i>
-                                Current <span>&nbsp; sales</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="target--vs--sales">
-                        <canvas id="tarsale"></canvas>
-                    </div>
-                </div>
-            </div>
             
-            <!-- graph end  -->
             
-        </section>
+            
         <section id="all-orders">
             <div class="recent-orders">
                 <h2>All Orders</h2>
@@ -270,9 +255,13 @@
                     <thead>
                         <tr>
                             <th>Order-Id</th>
-                            <th>Customer-Name</th>
-                            <th>Product</th>
-                            <th>Status</th>
+                                <th>Customer-Name</th>
+                                <th>Order-Img</th>
+                                <th>Order-Des.</th>
+                                <th>Order Brand</th>
+                                <th>Order Quantity</th>
+                                <th>Order. cat</th>
+                                <th>Price</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -305,7 +294,7 @@
                         <small class="text-muted">Admin</small>
                     </div>
                     <div class="profile-photo">
-                        <img src="/Images/profile.png" alt="">
+                        <img src="/Online_Shopping_Application_Frontend/img/profile.png" alt="">
                     </div>
                 </div>
             </div>
@@ -373,8 +362,8 @@
         </div>
 
     </div>
-
-    <script src="/Online_Shopping_Application_Frontend/JAVASCRIPT_FILES/productadmin.js"></script>
+    <script src="/Online_Shopping_Application_Frontend/JAVASCRIPT_FILES/admin.js"></script>
+    <!-- <script src="/Online_Shopping_Application_Frontend/JAVASCRIPT_FILES/productadmin.js"></script> -->
     <script src="/Online_Shopping_Application_Frontend/JAVASCRIPT_FILES/tarsale.js"></script>
 </body>
 
