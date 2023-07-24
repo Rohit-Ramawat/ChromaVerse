@@ -109,6 +109,8 @@ function loginUser(e){
       .then((result) => {
         var customerId = result.customerId;
         var customername = result.name;
+        var cart= result.cart;
+        localStorage.setItem("cart", JSON.stringify(cart));
         localStorage.setItem("customername", customername);
         console.log(result);
         localStorage.setItem("customerId", customerId);
