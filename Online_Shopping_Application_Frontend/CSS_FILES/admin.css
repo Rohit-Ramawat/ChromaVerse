@@ -550,7 +550,7 @@ main .recent-orders a{
         width: 83vw;
     }
     main .recent-orders{
-        width: 94%;
+        width: 84%;
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
