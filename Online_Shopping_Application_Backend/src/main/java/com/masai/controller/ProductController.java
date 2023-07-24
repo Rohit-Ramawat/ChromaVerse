@@ -70,7 +70,7 @@ public class ProductController {
 		Product removedProduct = productService.removeProduct(pid);
 		return new ResponseEntity<>(removedProduct, HttpStatus.OK);
 	}
-	
+
 	@SecurityRequirement(name = "demo-openapi")
 	@GetMapping("/products/search") // Endpoint to search products by keywords
 	public ResponseEntity<List<Product>> searchProducts(@RequestParam String keyword,
@@ -78,7 +78,6 @@ public class ProductController {
 		List<Product> products = productService.searchProducts(keyword, page);
 		return new ResponseEntity<>(products, HttpStatus.OK);
 	}
-
 
 	@SecurityRequirement(name = "demo-openapi")
 	@GetMapping("/products/sorted") // Endpoint to sort products
@@ -88,22 +87,23 @@ public class ProductController {
 		return new ResponseEntity<>(products, HttpStatus.OK);
 	}
 
-
-  @SecurityRequirement(name = "demo-openapi")
+	@SecurityRequirement(name = "demo-openapi")
 	@GetMapping("/products/filter")
 	public ResponseEntity<List<Product>> filterProducts(@RequestParam(required = false) List<String> category,
-	        @RequestParam(required = false) List<String> brand, @RequestParam(required = false) Double minPrice,
-	        @RequestParam(required = false) Double maxPrice, @RequestParam(defaultValue = "0") int page,@RequestParam String sortOrder) {
-	    return new ResponseEntity<>(productService.filterProducts(category, brand, minPrice, maxPrice, page, sortOrder), HttpStatus.OK);
+			@RequestParam(required = false) List<String> brand, @RequestParam(required = false) Double minPrice,
+			@RequestParam(required = false) Double maxPrice, @RequestParam(defaultValue = "0") int page,
+			@RequestParam(required = false)  String sortOrder) {
+		return new ResponseEntity<>(productService.filterProducts(category, brand, minPrice, maxPrice, page, sortOrder),
+				HttpStatus.OK);
 	}
 
-
-
+	@SecurityRequirement(name = "demo-openapi")
 	@GetMapping("/products/category")
 	public ResponseEntity<List<Category>> getCategory() {
 		return new ResponseEntity<List<Category>>(productService.getCategory(), HttpStatus.OK);
 	}
 
+	@SecurityRequirement(name = "demo-openapi")
 	@GetMapping("/products/brand")
 	public ResponseEntity<List<String>> getBrand() {
 		return new ResponseEntity<List<String>>(productService.getBrands(), HttpStatus.OK);

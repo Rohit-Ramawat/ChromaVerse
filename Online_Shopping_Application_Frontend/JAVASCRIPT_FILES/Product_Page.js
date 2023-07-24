@@ -1,11 +1,30 @@
 // ----------------------product----------------------
 
-fetch('http://localhost:8888/products')
-    .then(response => response.json())
-    .then(products => {
-        products.forEach(product => displayProduct(product));
-    })
-    .catch(error => console.error('Error fetching products:', error));
+document.addEventListener('DOMContentLoaded', function () {
+    // Fetch the selected category from local storage
+    const selectedCategory = localStorage.getItem('selectedCategory');
+
+    if (selectedCategory) {
+
+        fetch(`http://localhost:8888/products/filter?category=${selectedCategory}`)
+            .then(response => response.json())
+            .then(products => {
+                products.forEach(product => displayProduct(product));
+            })
+            .catch(error => console.error('Error fetching products:', error));
+        // Clear the saved category from local storage if you have used it for your purpose
+        localStorage.removeItem('selectedCategory');
+    } else {
+        fetch('http://localhost:8888/products')
+            .then(response => response.json())
+            .then(products => {
+                products.forEach(product => displayProduct(product));
+            })
+            .catch(error => console.error('Error fetching products:', error));
+    }
+});
+
+
 
 const productContainer = document.getElementById('productContainer');
 
@@ -27,7 +46,6 @@ function displayProduct(product) {
 
     const productBrand = document.createElement('p');
     productBrand.textContent = `Brand: ${product.brand}`;
-console.log(product.image_URL);
     const productImage = document.createElement('img');
     productImage.src = product.image_URL
 
@@ -46,8 +64,36 @@ console.log(product.image_URL);
 }
 
 
+//add to cart
+const jwtToken = JSON.parse(localStorage.getItem("jwtToken")) || null;
 
+function addToCart(product) {
+    if (jwtToken) {
+        const cart = JSON.parse(localStorage.getItem("cart"));
 
+        fetch(`http://localhost:8888/carts/${cart.cartId}?productId=${product.productId}&quantity=1`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `bearer ${jwtToken}`
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Request failed with status ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                alert('Product added successfully:', data);
+            })
+            .catch(error => {
+                console.error('Error adding product:', error.message);
+            });
+    } else {
+        alert("Please Login First");
+    }
+}
 
 
 
@@ -162,7 +208,7 @@ function applyFilter() {
     apiUrl += `sortOrder=${sortParameter}`;
 
     // Remove the trailing '&' from the URL
-  //  apiUrl = apiUrl.slice(0, -1);
+    //  apiUrl = apiUrl.slice(0, -1);
 
     // Fetch filtered and sorted products and update the display
     fetch(apiUrl)
@@ -183,14 +229,14 @@ clearButton.addEventListener('click', () => {
     document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
     document.getElementById('filterMinPrice').value = '';
     document.getElementById('filterMaxPrice').value = '';
-    
+
     fetch('http://localhost:8888/products')
-    .then(response => response.json())
-    .then(products => {
-        productContainer.innerHTML = "";
-        products.forEach(product => displayProduct(product));
-    })
-    .catch(error => console.error('Error fetching products:', error));
+        .then(response => response.json())
+        .then(products => {
+            productContainer.innerHTML = "";
+            products.forEach(product => displayProduct(product));
+        })
+        .catch(error => console.error('Error fetching products:', error));
 });
 
 

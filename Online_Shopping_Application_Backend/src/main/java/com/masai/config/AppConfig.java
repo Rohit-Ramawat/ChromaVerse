@@ -61,8 +61,8 @@ public class AppConfig {
 		      .requestMatchers(HttpMethod.GET, "/customers/**","/orders/**","/orders/date")
 		      								.hasAnyRole("ADMIN","USER")
 		      								
-		      .requestMatchers(HttpMethod.GET,"/products","/products/category/{cname}",
-		    		  "/products/search","/products/sorted","/products/filter" ).permitAll()								
+		      .requestMatchers(HttpMethod.GET,"/products","/products/category/**",
+		    		  "/products/search","/products/sorted","/products/filter", "/products/category", "/products/brand").permitAll()								
 		      											
 		      .requestMatchers(HttpMethod.POST, "/admins","/products").hasRole("ADMIN")
 		      
